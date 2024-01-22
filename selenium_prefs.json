@@ -1,0 +1,4 @@
+{
+  "Chrome": {"profile.managed_default_content_settings.images": 2},
+  "Firefox":  {}
+}
