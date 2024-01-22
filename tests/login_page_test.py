@@ -18,7 +18,7 @@ def test_auth_page_fail(setup_login):
 
 
 @pytest.mark.auth
-def test_auth_page_existing_user(setup_login):
+def test_auth_page_success(setup_login):
     logging.info("Test Successful Auth")
     verification_text_logged_in = "Dashboard"
     verification_text_logged_out = "Sign up for GitHub"
