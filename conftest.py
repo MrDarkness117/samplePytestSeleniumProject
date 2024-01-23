@@ -3,6 +3,7 @@ import logging
 from pathlib import Path
 
 import pytest
+from paths import *
 from selenium import webdriver
 from selenium.webdriver import DesiredCapabilities
 from webdriver_manager.chrome import ChromeDriverManager
@@ -16,13 +17,12 @@ driver_presets = {
     "Chrome": (webdriver.Chrome(service=ChromeService(ChromeDriverManager().install())), ChromeOptions(), DesiredCapabilities.CHROME),
     "Firefox": (webdriver.Firefox(service=FirefoxService(GeckoDriverManager().install())), FirefoxOptions(), DesiredCapabilities.FIREFOX)
 }
-root_path = str(Path.cwd()) + "\\..\\"
 
 
 def pytest_configure(config):
     logging.basicConfig(
         level=logging.INFO,
-        filename=root_path + "test.log",
+        filename=pytest_logs,
         format="[%(levelname)s]: %(message)s",
         datefmt="%Y-%m-%d %H:%M:%S",  # На случай если понадобится знать точное время
     )
@@ -35,7 +35,7 @@ def setup_login(request):
         driver = driver_presets["Chrome"][0]
         driver_options = driver_presets["Chrome"][1]
         caps = driver_presets["Chrome"][2]
-        prefs = json.load(open(root_path + "selenium_prefs.json", "r", encoding="utf-8"))
+        prefs = json.load(open(selenium_prefs, "r", encoding="utf-8"))
         caps['goog:loggingPrefs'] = {'performance': 'ALL'}
         driver_options.add_experimental_option(name='prefs', value=prefs["Chrome"])
         driver_options.add_experimental_option(name='caps', value=caps)
