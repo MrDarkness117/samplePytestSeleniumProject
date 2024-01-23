@@ -42,6 +42,7 @@ tests – содержит в себе наборы тестов. Запуска
 3. cd ../samplePytestSeleniumProject/venv/Scripts/; activate.bat либо ./activate.ps1 либо activate (если на Linux)
 4. pip install -r requirements.txt
 5. pytest -v (чтобы убедиться что всё на месте и работает)
+6. Дополнительно: установить необходимые браузеры для запуска тестов: Chrome, Firefox, др. (в зависимости от пополнения требований в conftest.py)
 
 ### Создание page objects
 1. Импортировать CoreLocators по аналогии github_auth_page.py
